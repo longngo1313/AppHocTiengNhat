@@ -33,29 +33,9 @@ import java.util.List;
  */
 
 public class RadioPlayBaseActivity extends BaseActivity<AppRadioBasePresenter> implements ICallbackFragment, View.OnClickListener, IListenerUpdateUI {
-    private static final String TAG_FRAGMENT_LIST_PRESET_EDIT = "TAG_FRAGMENT_LIST_PRESET_EDIT";
-    private static final String ANOTHER_APP_CALLS_SETTING = "android.lge.car.app.setting.ANOTHER_APP_CALLS_SETTING";
-//    private RadioPlayBackBaseFragment mRadioPlayBackFragment;
-    private String TAG_FRAGMENT_RADIO_PLAY = "TAG_FRAGMENT_RADIO_PLAY";
+
     private RelativeLayout mContainer;
-    public PopupWindow mPopupWindow;
-//    private RadioStorage mRadioStorage;
     private static final String TAG = "RadioPlayBaseActivity";
-    public static final int REQUET_CODE_ACTIVITY_LIST_EDIT = 111;
-
-    public static final String ACTION_RELOAD_LIST_PRESET = "ACTION_RELOAD_LIST_PRESET";
-
-    private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            switch (intent.getAction()) {
-                case ACTION_RELOAD_LIST_PRESET:
-                    break;
-                default:
-                    break;
-            }
-        }
-    };
 
 
 
@@ -67,22 +47,7 @@ public class RadioPlayBaseActivity extends BaseActivity<AppRadioBasePresenter> i
     @SuppressLint("ResourceType")
     @Override
     protected void onSetupLayout() {
-//        mRadioStorage = RadioStorage.newInstance(getContext());
-//        RadioDataDemo.sListPresetFM = RadioStorage.newInstance(getContext()).getListPresetFM();
-//        RadioDataDemo.sListPresetAM = RadioStorage.newInstance(getContext()).getListPresetAM();
-//        RadioDataDemo.sListStationFM = RadioStorage.newInstance(getContext()).getListStationFM();
-//        RadioDataDemo.sListStationAM = RadioStorage.newInstance(getContext()).getListStationtAM();
 
-        getBaseContext().registerReceiver(broadcastReceiver, new IntentFilter(ACTION_RELOAD_LIST_PRESET));
-        // set title menu
-//        if (mRadioStorage.getStateRadioApp() == AppConfig.BAND_AM) {
-//
-//            setTitle(AM);
-//        } else {
-//            setTitle(AppConfig.FM);
-//        }
-
-//        ((RadioCarMenuCallBacks) mMenuCallBacks).setIListenerUpdateUI(this);
         mContainer = (RelativeLayout) findViewById(R.id.full_container);
     }
 
@@ -129,7 +94,6 @@ public class RadioPlayBaseActivity extends BaseActivity<AppRadioBasePresenter> i
 
     @Override
     protected void onDestroy() {
-        getBaseContext().unregisterReceiver(broadcastReceiver);
         super.onDestroy();
     }
 
