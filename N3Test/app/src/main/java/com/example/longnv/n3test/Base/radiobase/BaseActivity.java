@@ -56,7 +56,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     }
 
     @Override
-    public BasePresenter getPresenter() {
+    public P getPresenter() {
         return mPresenter;
     }
 

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
+import com.example.longnv.n3test.views.TestActivity
 import kotlinx.android.synthetic.main.activity_fullscreen.*
 
 /**
@@ -19,7 +20,6 @@ class FullscreenActivity : AppCompatActivity() {
     private val mShowPart2Runnable = Runnable {
         // Delayed display of UI elements
         supportActionBar?.show()
-        fullscreen_content_controls.visibility = View.VISIBLE
     }
     private var mVisible: Boolean = false
     private val mHideRunnable = Runnable { hide() }
@@ -43,13 +43,9 @@ class FullscreenActivity : AppCompatActivity() {
 
         mVisible = true
 
-        // Upon interacting with UI controls, delay any scheduled hide()
-        // operations to prevent the jarring behavior of controls going away
-        // while interacting with the UI.
-        dummy_button.setOnTouchListener(mDelayHideTouchListener)
 
         btn_test_screen.setOnClickListener(View.OnClickListener {
-            val intent = Intent(this, RadioPlayBaseActivity::class.java)
+            val intent = Intent(this, TestActivity::class.java)
             startActivity(intent)
         })
     }
@@ -74,7 +70,6 @@ class FullscreenActivity : AppCompatActivity() {
     private fun hide() {
         // Hide UI first
         supportActionBar?.hide()
-        fullscreen_content_controls.visibility = View.GONE
         mVisible = false
 
         // Schedule a runnable to remove the status and navigation bar after a delay

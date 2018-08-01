@@ -28,7 +28,6 @@ public abstract class BaseModel {
     public BaseModel(Context context) {
         super();
         mContext = context;
-
     }
 
     public void doSomeBackgroundWork() {
