@@ -1,4 +1,4 @@
-package com.example.longnv.n3test.Model;
+package com.example.longnv.n3test.models;
 
 
 public class Question {

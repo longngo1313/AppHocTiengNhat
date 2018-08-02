@@ -1,7 +1,7 @@
-package com.example.longnv.n3test.Interface;
+package com.example.longnv.n3test.interfaces;
 
 import com.example.longnv.n3test.Base.radiobase.ICallBackModel;
-import com.example.longnv.n3test.Model.Question;
+import com.example.longnv.n3test.models.Question;
 
 import java.util.ArrayList;
 
