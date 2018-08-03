@@ -3,7 +3,9 @@ package com.example.longnv.n3test.views;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SnapHelper;
 import android.util.Log;
 
 import com.example.longnv.n3test.Base.radiobase.BaseActivity;
@@ -17,6 +19,8 @@ import java.util.ArrayList;
 public class TestActivity extends BaseActivity<TestPresenter> {
 
     private RecyclerView mRvListQuestions;
+
+    private ArrayList<Question> listQuestion = new ArrayList<>();
 
     @Override
     protected int setViewLayout() {
@@ -37,19 +41,34 @@ public class TestActivity extends BaseActivity<TestPresenter> {
 
     @Override
     public void onCallBackPresenter(String key, Object data) {
-        ArrayList<Question> questions = (ArrayList<Question>) data;
 
-        Log.d("15081991", " SIZE --------- " + questions.size());
-
-        if(questions == null){
+        if(!(data instanceof ArrayList )){
             return;
         }
 
-        QuestionListAdapter questionListAdapter = new QuestionListAdapter(questions, this);
+        if(((ArrayList) data).isEmpty() || !(((ArrayList) data).get(0) instanceof Question) ){
+            return;
+        }
+
+        listQuestion = (ArrayList<Question>) data;
+
+        Log.d("15081991", " SIZE --------- " + listQuestion.size());
+
+        if(listQuestion == null){
+            return;
+        }
+
+        QuestionListAdapter questionListAdapter = new QuestionListAdapter(listQuestion, this);
 
         mRvListQuestions.setAdapter(questionListAdapter);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getParent());
+
+        LinearLayoutManager layoutManager
+                = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+
         mRvListQuestions.setLayoutManager(layoutManager);
+
+        SnapHelper helper = new LinearSnapHelper();
+        helper.attachToRecyclerView(mRvListQuestions);
         mRvListQuestions.setItemAnimator(new DefaultItemAnimator());
     }
 }
