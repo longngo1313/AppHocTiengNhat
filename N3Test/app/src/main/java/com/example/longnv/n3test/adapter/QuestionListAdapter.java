@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.longnv.n3test.R;
 import com.example.longnv.n3test.models.Question;
 
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public class QuestionListAdapter extends RecyclerView.Adapter<QuestionListAdapte
 
     @Override
     public CustomViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.question_item, parent, false);
+        View view = mInflater.inflate(R.layout.fragment_single_question, parent, false);
         return new QuestionListAdapter.CustomViewHolder(view);
     }
 
@@ -57,8 +58,7 @@ public class QuestionListAdapter extends RecyclerView.Adapter<QuestionListAdapte
             return;
         }
 
-        holder.mShortText.setText(question.getShortText());
-        holder.mTitle.setText(question.getText());
+        holder.mQuestion.setText(question.getQuestion());
 
     }
 
@@ -68,15 +68,12 @@ public class QuestionListAdapter extends RecyclerView.Adapter<QuestionListAdapte
     }
 
     class CustomViewHolder extends RecyclerView.ViewHolder {
-        private ImageView mImgIcon;
-        private TextView mTitle;
-        private TextView mShortText;
+
+        private TextView mQuestion;
 
         public CustomViewHolder(View view) {
             super(view);
-            this.mImgIcon = (ImageView) view.findViewById(R.id.img_question);
-            this.mTitle = (TextView) view.findViewById(R.id.text_question);
-            this.mShortText = (TextView) view.findViewById(R.id.short_text_question);
+            this.mQuestion = view.findViewById(R.id.txt_question);
         }
     }
 }
