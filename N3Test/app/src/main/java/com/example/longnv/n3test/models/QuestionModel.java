@@ -22,6 +22,10 @@ public class QuestionModel extends BaseModel {
 
                 Question question = new Question.QuestionBuilder("01")
                         .setQuestion("Nguyen Vu Long")
+                        .setAnswerOne("One")
+                        .setAnswerTwo("Two")
+                        .setAnswerThree("Three")
+                        .setAnswerFour("Four")
                         .setRightAnswer("True").build();
 
                 questions.add(question);

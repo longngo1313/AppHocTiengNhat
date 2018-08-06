@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.example.longnv.n3test.R;
@@ -59,7 +60,10 @@ public class QuestionListAdapter extends RecyclerView.Adapter<QuestionListAdapte
         }
 
         holder.mQuestion.setText(question.getQuestion());
-
+        holder.mAnswerOne.setText(question.getAnswerOne());
+        holder.mAnswerTwo.setText(question.getAnswerTwo());
+        holder.mAnswerThree.setText(question.getAnswerThree());
+        holder.mAnswerFour.setText(question.getAnswerFour());
     }
 
     @Override
@@ -71,9 +75,16 @@ public class QuestionListAdapter extends RecyclerView.Adapter<QuestionListAdapte
 
         private TextView mQuestion;
 
+        private RadioButton mAnswerOne,mAnswerTwo,mAnswerThree,mAnswerFour;
+
+
         public CustomViewHolder(View view) {
             super(view);
             this.mQuestion = view.findViewById(R.id.txt_question);
+            this.mAnswerOne = view.findViewById(R.id.txt_answer_1);
+            this.mAnswerTwo = view.findViewById(R.id.txt_answer_2);
+            this.mAnswerThree = view.findViewById(R.id.txt_answer_3);
+            this.mAnswerFour = view.findViewById(R.id.txt_answer_4);
         }
     }
 }

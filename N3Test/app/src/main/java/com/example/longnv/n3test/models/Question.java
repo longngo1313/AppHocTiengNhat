@@ -12,9 +12,9 @@ public class Question {
     private String answerTwo;
     private String answerThree;
     private String answerFour;
-    private String rigthAnswer;
+    private String rightAnswer;
 
-    public Question(String idQuestion, String point, String extraComment, String url, String question, String answerOne, String answerTwo, String answerThree, String answerFour, String rigthAnswer) {
+    public Question(String idQuestion, String point, String extraComment, String url, String question, String answerOne, String answerTwo, String answerThree, String answerFour, String rightAnswer) {
         this.idQuestion = idQuestion;
         this.point = point;
         this.extraComment = extraComment;
@@ -24,7 +24,7 @@ public class Question {
         this.answerTwo = answerTwo;
         this.answerThree = answerThree;
         this.answerFour = answerFour;
-        this.rigthAnswer = rigthAnswer;
+        this.rightAnswer = rightAnswer;
     }
 
     public String getIdQuestion() {
@@ -99,12 +99,12 @@ public class Question {
         this.answerFour = answerFour;
     }
 
-    public String getRigthAnswer() {
-        return rigthAnswer;
+    public String getRightAnswer() {
+        return rightAnswer;
     }
 
-    public void setRigthAnswer(String rigthAnswer) {
-        this.rigthAnswer = rigthAnswer;
+    public void setRightAnswer(String rightAnswer) {
+        this.rightAnswer = rightAnswer;
     }
 
 
@@ -118,7 +118,7 @@ public class Question {
         this.answerTwo = builder.answerTwo;
         this.answerThree = builder.answerThree;
         this.answerFour = builder.answerFour;
-        this.rigthAnswer = builder.rigthAnswer;
+        this.rightAnswer = builder.rightAnswer;
     }
 
     public static class QuestionBuilder {
@@ -135,7 +135,7 @@ public class Question {
         private String answerTwo;
         private String answerThree;
         private String answerFour;
-        private String rigthAnswer;
+        private String rightAnswer;
 
         public QuestionBuilder(String idQuestion) {
             this.idQuestion = idQuestion;
@@ -183,7 +183,7 @@ public class Question {
         }
 
         public QuestionBuilder setRightAnswer(String data) {
-            this.rigthAnswer = data;
+            this.rightAnswer = data;
             return this;
         }
 
