@@ -21,7 +21,11 @@ public class TestActivity extends BaseActivity<TestPresenter> {
 
     private RecyclerView mRvListQuestions;
 
-    private ArrayList<Question> listQuestion = new ArrayList<>();
+    private ArrayList<Question> mListQuestion = new ArrayList<>();
+
+    private ArrayList<String> mListAnswers = new ArrayList<>();
+
+    private static final String EMPTY_ANSWER =  "5";
 
     @Override
     protected int setViewLayout() {
@@ -51,15 +55,13 @@ public class TestActivity extends BaseActivity<TestPresenter> {
             return;
         }
 
-        listQuestion = (ArrayList<Question>) data;
+        mListQuestion = (ArrayList<Question>) data;
 
-        Log.d("15081991", " SIZE --------- " + listQuestion.size());
-
-        if(listQuestion == null){
-            return;
+        for(int i = 0; i < mListQuestion.size(); i++){
+            mListAnswers.add(EMPTY_ANSWER);
         }
 
-        QuestionListAdapter questionListAdapter = new QuestionListAdapter(listQuestion, this);
+        QuestionListAdapter questionListAdapter = new QuestionListAdapter(mListQuestion, this);
 
         mRvListQuestions.setAdapter(questionListAdapter);
 
@@ -75,8 +77,13 @@ public class TestActivity extends BaseActivity<TestPresenter> {
         questionListAdapter.setActionCallBack(new IAnswer() {
             @Override
             public void onAnswerChange(int id, String answer) {
-                Log.d("15081991" , "Sent ID---------------------" + id);
-                Log.d("15081991" , "Sent Data---------------------" + answer);
+
+                if(mListAnswers.isEmpty()){
+                    return;
+                }
+
+                mListAnswers.set(id, answer);
+
             }
         });
     }
