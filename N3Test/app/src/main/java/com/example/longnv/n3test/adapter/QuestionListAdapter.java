@@ -4,14 +4,17 @@ package com.example.longnv.n3test.adapter;
 
 import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.longnv.n3test.R;
+import com.example.longnv.n3test.interfaces.IAnswer;
 import com.example.longnv.n3test.models.Question;
 
 import java.util.ArrayList;
@@ -30,6 +33,8 @@ public class QuestionListAdapter extends RecyclerView.Adapter<QuestionListAdapte
 
     public static final String TAG = "QuestionListAdapter";
 
+    public IAnswer mIAnswer;
+
     private ArrayList<Question> mListData = new ArrayList<>();
 
     public QuestionListAdapter(ArrayList<Question> personContact, Activity activity) {
@@ -47,7 +52,7 @@ public class QuestionListAdapter extends RecyclerView.Adapter<QuestionListAdapte
     }
 
     @Override
-    public void onBindViewHolder(CustomViewHolder holder, int position) {
+    public void onBindViewHolder(CustomViewHolder holder, final int position) {
 
         if(mListData==null || mActivity==null){
             return;
@@ -64,6 +69,23 @@ public class QuestionListAdapter extends RecyclerView.Adapter<QuestionListAdapte
         holder.mAnswerTwo.setText(question.getAnswerTwo());
         holder.mAnswerThree.setText(question.getAnswerThree());
         holder.mAnswerFour.setText(question.getAnswerFour());
+        holder.mRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+
+                RadioButton radioButton = radioGroup.findViewById(i);
+
+                String result = radioButton.getText().toString();
+
+                if (result.isEmpty()){
+                    return;
+                }
+
+                if(mIAnswer != null){
+                    mIAnswer.onAnswerChange(position, result);
+                }
+            }
+        });
     }
 
     @Override
@@ -71,11 +93,18 @@ public class QuestionListAdapter extends RecyclerView.Adapter<QuestionListAdapte
         return (mListData!=null && !mListData.isEmpty()) ? mListData.size() : 0;
     }
 
+
+    public void setActionCallBack(IAnswer mIAnswer){
+        this.mIAnswer = mIAnswer;
+    }
+
     class CustomViewHolder extends RecyclerView.ViewHolder {
 
         private TextView mQuestion;
 
         private RadioButton mAnswerOne,mAnswerTwo,mAnswerThree,mAnswerFour;
+
+        private RadioGroup mRadioGroup;
 
 
         public CustomViewHolder(View view) {
@@ -85,6 +114,7 @@ public class QuestionListAdapter extends RecyclerView.Adapter<QuestionListAdapte
             this.mAnswerTwo = view.findViewById(R.id.txt_answer_2);
             this.mAnswerThree = view.findViewById(R.id.txt_answer_3);
             this.mAnswerFour = view.findViewById(R.id.txt_answer_4);
+            this.mRadioGroup = view.findViewById(R.id.rg_answers);
         }
     }
 }

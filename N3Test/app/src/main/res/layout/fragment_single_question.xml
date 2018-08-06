@@ -14,14 +14,9 @@
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="horizontal"
+        android:orientation="vertical"
+        android:id="@+id/rg_answers"
         android:layout_weight="4">
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
 
             <RadioButton
                 android:layout_width="match_parent"
@@ -37,8 +32,6 @@
                 android:gravity="center"
                 android:id="@+id/txt_answer_2"/>
 
-
-
             <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -52,13 +45,6 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:id="@+id/txt_answer_4"/>
-
-
-
-
-        </RadioGroup>
-
-
     </RadioGroup>
 
 

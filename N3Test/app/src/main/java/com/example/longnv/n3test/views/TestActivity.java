@@ -10,6 +10,7 @@ import android.util.Log;
 
 import com.example.longnv.n3test.Base.radiobase.BaseActivity;
 import com.example.longnv.n3test.adapter.QuestionListAdapter;
+import com.example.longnv.n3test.interfaces.IAnswer;
 import com.example.longnv.n3test.models.Question;
 import com.example.longnv.n3test.presenters.TestPresenter;
 import com.example.longnv.n3test.R;
@@ -70,5 +71,13 @@ public class TestActivity extends BaseActivity<TestPresenter> {
         SnapHelper helper = new LinearSnapHelper();
         helper.attachToRecyclerView(mRvListQuestions);
         mRvListQuestions.setItemAnimator(new DefaultItemAnimator());
+
+        questionListAdapter.setActionCallBack(new IAnswer() {
+            @Override
+            public void onAnswerChange(int id, String answer) {
+                Log.d("15081991" , "Sent ID---------------------" + id);
+                Log.d("15081991" , "Sent Data---------------------" + answer);
+            }
+        });
     }
 }
