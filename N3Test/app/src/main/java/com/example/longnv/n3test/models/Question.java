@@ -3,6 +3,35 @@ package com.example.longnv.n3test.models;
 
 public class Question {
 
+
+    public static final String TABLE_NAME = "question_tbl";
+    public static final String COLUMN_ID = "id";
+    public static final String COLUMN_POINT = "point";
+    public static final String COLUMN_EXTRA_COMMENT = "extraComment";
+    public static final String COLUMN_URL = "url";
+    public static final String COLUMN_QUESTION = "question";
+    public static final String COLUMN_ANSWER_ONE = "answerOne";
+    public static final String COLUMN_ANSWER_TWO = "answerTwo";
+    public static final String COLUMN_ANSWER_THREE = "answerThree";
+    public static final String COLUMN_ANSWER_FOUR = "answerFour";
+    public static final String COLUMN_RIGTH_ANSWER = "rightAnswer";
+
+
+    // Create table SQL query
+    public static final String CREATE_TABLE =
+            "CREATE TABLE " + TABLE_NAME + "("
+                    + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + COLUMN_POINT + " TEXT,"
+                    + COLUMN_EXTRA_COMMENT + " TEXT,"
+                    + COLUMN_URL + " TEXT,"
+                    + COLUMN_QUESTION + " TEXT,"
+                    + COLUMN_ANSWER_ONE + " TEXT,"
+                    + COLUMN_ANSWER_TWO + " TEXT,"
+                    + COLUMN_ANSWER_THREE + " TEXT,"
+                    + COLUMN_ANSWER_FOUR + " TEXT,"
+                    + COLUMN_RIGTH_ANSWER + " TEXT"
+                    + ")";
+
     private String idQuestion;
     private String point;
     private String extraComment;
@@ -25,6 +54,9 @@ public class Question {
         this.answerThree = answerThree;
         this.answerFour = answerFour;
         this.rightAnswer = rightAnswer;
+    }
+
+    public Question() {
     }
 
     public String getIdQuestion() {

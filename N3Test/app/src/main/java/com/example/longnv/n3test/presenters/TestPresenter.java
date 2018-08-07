@@ -22,6 +22,7 @@ public class TestPresenter extends BasePresenter<QuestionModel> {
             return;
         }
         mModel.getListQuestion();
+
     }
 
     @Override
